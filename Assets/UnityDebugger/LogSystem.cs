@@ -12,7 +12,8 @@ namespace UnityDebugger
                 openLog = true,
                 openTime = true,
                 showThreadID = true,
-                showColorName = true
+                showColorName = true,
+                logSave = true
             });
             Debuger.Log("Log");
             Debuger.LogWarning("LogWarning");

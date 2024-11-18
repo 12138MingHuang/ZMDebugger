@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Text;
 using System.Threading;
+using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace UnityDebugger
 {
@@ -14,6 +16,14 @@ namespace UnityDebugger
                 cfg = new LogConfig();
             else
                 cfg = config;
+
+            if (cfg.logSave)
+            {
+                GameObject logObj = new GameObject("LogHelper");
+                Object.DontDestroyOnLoad(logObj);
+                UnityLogHelper unityLogHelper = logObj.AddComponent<UnityLogHelper>();
+                unityLogHelper.InitLogFileModule(cfg.LogFileSavePath, cfg.LogFileName);
+            }
         }
 
         #region 普通日志
