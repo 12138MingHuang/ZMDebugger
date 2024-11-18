@@ -24,6 +24,12 @@ namespace UnityDebugger
                 UnityLogHelper unityLogHelper = logObj.AddComponent<UnityLogHelper>();
                 unityLogHelper.InitLogFileModule(cfg.LogFileSavePath, cfg.LogFileName);
             }
+            if (cfg.showFPS)
+            {
+                GameObject fpsObj = new GameObject("FPS");
+                Object.DontDestroyOnLoad(fpsObj);
+                fpsObj.AddComponent<FPS>();
+            }
         }
 
         #region 普通日志
