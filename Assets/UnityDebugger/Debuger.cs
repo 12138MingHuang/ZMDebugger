@@ -98,7 +98,7 @@ namespace UnityDebugger
         {
             if (!cfg.openLog) return;
             
-            string log = GetUnityColor(obj.ToString(), color);
+            string log = GenerateLog(obj.ToString(), color);
             log = GetUnityColor(log, color);
             UnityEngine.Debug.Log(log);
         }
@@ -145,7 +145,7 @@ namespace UnityDebugger
             StringBuilder stringBuilder = new StringBuilder(cfg.logHeadFix, 100);
             if (cfg.openTime)
             {
-                stringBuilder.AppendFormat(" {0:hh:mm:ss-fff}", DateTime.Now);
+                stringBuilder.AppendFormat(" {0:HH:mm:ss-fff}", DateTime.Now);
             }
             if (cfg.showThreadID)
             {
