@@ -7,6 +7,7 @@ namespace UnityDebugger
     {
         private void Awake()
         {
+#if OPEN_LOG
             Debuger.InitLog(new LogConfig
             {
                 openLog = true,
@@ -22,6 +23,9 @@ namespace UnityDebugger
             Debuger.ColorLog(LogColor.Cyan, "ColorLog");
             Debuger.LogGreen("LogGreen");
             Debuger.LogYellow("LogYellow");
+#else
+            Debug.unityLogger.logEnabled = false;
+#endif
         }
     }
 }

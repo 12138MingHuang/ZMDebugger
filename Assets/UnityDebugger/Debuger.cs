@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Text;
 using System.Threading;
 using UnityEngine;
@@ -10,6 +11,7 @@ namespace UnityDebugger
     {
         public static LogConfig cfg;
         
+        [Conditional("OPEN_LOG")]
         public static void InitLog(LogConfig config = null)
         {
             if (config == null)
@@ -33,7 +35,7 @@ namespace UnityDebugger
         }
 
         #region 普通日志
-
+        [Conditional("OPEN_LOG")]
         public static void Log(object obj)
         {
             if(!cfg.openLog) return;
@@ -41,7 +43,7 @@ namespace UnityDebugger
             string log = GenerateLog(obj.ToString());
             UnityEngine.Debug.Log(log);
         }
-
+        [Conditional("OPEN_LOG")]
         public static void Log(object obj, params object[] args)
         {
             if (!cfg.openLog) return;
@@ -57,7 +59,7 @@ namespace UnityDebugger
             string log = GenerateLog(obj + content);
             UnityEngine.Debug.Log(log);
         }
-        
+        [Conditional("OPEN_LOG")]
         public static void LogWarning(object obj)
         {
             if(!cfg.openLog) return;
@@ -65,7 +67,7 @@ namespace UnityDebugger
             string log = GenerateLog(obj.ToString());
             UnityEngine.Debug.LogWarning(log);
         }
-
+        [Conditional("OPEN_LOG")]
         public static void LogWarning(object obj, params object[] args)
         {
             if (!cfg.openLog) return;
@@ -81,7 +83,7 @@ namespace UnityDebugger
             string log = GenerateLog(obj + content);
             UnityEngine.Debug.LogWarning(log);
         }
-        
+        [Conditional("OPEN_LOG")]
         public static void LogError(object obj)
         {
             if(!cfg.openLog) return;
@@ -89,7 +91,7 @@ namespace UnityDebugger
             string log = GenerateLog(obj.ToString());
             UnityEngine.Debug.LogError(log);
         }
-
+        [Conditional("OPEN_LOG")]
         public static void LogError(object obj, params object[] args)
         {
             if (!cfg.openLog) return;
@@ -109,7 +111,7 @@ namespace UnityDebugger
         #endregion
 
         #region 颜色日志打印
-
+        [Conditional("OPEN_LOG")]
         public static void ColorLog(LogColor color, object obj)
         {
             if (!cfg.openLog) return;
@@ -118,37 +120,37 @@ namespace UnityDebugger
             log = GetUnityColor(log, color);
             UnityEngine.Debug.Log(log);
         }
-        
+        [Conditional("OPEN_LOG")]
         public static void LogGreen(object msg)
         {
             ColorLog(LogColor.Green,msg);
         }
-
+        [Conditional("OPEN_LOG")]
         public static void LogYellow(object msg)
         {
             ColorLog(LogColor.Yellow, msg);
         }
-
+        [Conditional("OPEN_LOG")]
         public static void LogOrange(object msg)
         {
             ColorLog(LogColor.Orange, msg);
         }
-
+        [Conditional("OPEN_LOG")]
         public static void LogRed(object msg)
         {
             ColorLog(LogColor.Red, msg);
         }
-
+        [Conditional("OPEN_LOG")]
         public static void LogBlue(object msg)
         {
             ColorLog(LogColor.Blue, msg);
         }
-
+        [Conditional("OPEN_LOG")]
         public static void LogMagenta(object msg)
         {
             ColorLog(LogColor.Magenta, msg);
         }
-
+        [Conditional("OPEN_LOG")]
         public static void LogCyan(object msg)
         {
             ColorLog(LogColor.Cyan, msg);
